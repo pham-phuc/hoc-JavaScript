@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="stylesheet" href="../style.css">
+  </head>
+
+  <body>
+    <div class="container">
+      <form
+        action=""
+        method=""
+        name="register"
+        onsubmit="return FormValidate();"
+      >
+        <div class="mg-20">
+          <label for="name"
+            >Họ tên <span style="color: red" id="errorName">(*)</span
+          ></label>
+          <input type="text" name="name" class="form-control w-500 h-50px" id="name" />
+        </div>
+
+        <div class="mg-20">
+          <label for="phone"
+            >Phone <span style="color: red" id="erorPhone">(*)</span
+          ></label>
+          <input type="text" name="phone" class="form-control w-500 h-50px" id="phone" />
+        </div>
+
+        <div class="mg-20">
+          <label for="email"
+            >Email <span style="color: red" id="erorEmail">(*)</span
+          ></label>
+          <input type="text" name="email" class="form-control w-500 h-50px" id="email" />
+        </div>
+
+        <button class="mg-20 bt" type="submit">Submit</button>
+      </form>
+
+      <div class="container">
+        <div class="w-200">
+          <a href="../index.html"
+            ><div class="mg-20">
+              <button class="pd-20 w-full bgr cursor">Home</button>
+            </div></a
+          >
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function FormValidate() {
+        var name = document.getElementById("name").value;
+        var errorName = document.getElementById("errorName");
+        var regexName = /^[^\d+]*[\d+]{0}[^\d+]*$/;
+
+        var phone = document.getElementById("phone").value;
+        var erorPhone = document.getElementById("erorPhone");
+        var regexPhone =
+          /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+
+        var email = document.getElementById("email").value;
+        var errorEmail = document.getElementById("erorEmail");
+        var reGexEmail = /[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}/gim;
+
+        if (name == "" || name == null) {
+          errorName.innerHTML = "Họ tên không được để trống!";
+        } else if (!regexName.test(name)) {
+          errorName.innerHTML = "Họ tên không hợp lệ!";
+          return false;
+        } else {
+          errorName.innerHTML = "";
+        }
+
+        if (phone == "" || phone == null) {
+          erorPhone.innerHTML = "Số điện thoại không được để trống!";
+        } else if (!regexPhone.test(phone)) {
+          erorPhone.innerHTML = "SĐT không hợp lệ!";
+          return false;
+        } else {
+          erorPhone.innerHTML = "";
+        }
+
+        if (email == "" || email == null) {
+          errorEmail.innerHTML = "Email không được để trống!";
+        } else if (!reGexEmail.test(email)) {
+          errorEmail.innerHTML = "Email không hợp lệ!";
+          email = "";
+        } else {
+          errorEmail.innerHTML = "";
+        }
+
+        return false;
+      }
+    </script>
+  </body>
+</html>
